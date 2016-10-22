@@ -33,3 +33,31 @@ for tweet in public_tweets:
 	else:
 		print("The tweet is negative")	
 	print ("")
+
+# Option to download CSV 
+
+decision = input("Would you like to download a csv file?: ")
+
+while decision not in ("yes", "no"):
+	decision = ("Please type either yes or no!: ")
+
+count_csv = 0
+if decision == "yes":
+	print("CSV Downloaded!")
+	with open('tweets.csv', "w", newline='') as csvfile:
+		writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+		writer.writerow(("Count", "Tweets", "Sentiment"))
+		for tweet in public_tweets:
+			count_csv = count_csv + 1	
+			tweetlist = tweet.text
+			analysis = TextBlob(tweet.text)
+			if analysis.sentiment.polarity > 0:
+				tweet_sentiment = "POSITIVE"
+			elif analysis.sentiment.polarity == 0:
+				tweet_sentiment = "NEUTRAL"
+			else:
+				tweet_sentiment = "NEGATIVE"
+
+			writer.writerow((count_csv, tweetlist, tweet_sentiment))
+elif decision == "no":
+	print("OK then")
