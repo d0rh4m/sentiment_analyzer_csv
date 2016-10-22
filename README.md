@@ -1,6 +1,6 @@
 # sentiment_analyzer
-Sentiment analysis with Twitter API and TextBlob
-Add option to download CSV of tweets
+1. Sentiment analysis with Twitter API and TextBlob
+2. Add option to download CSV of tweets
 
 # Usage
 1. Install TextBlob and Tweepy 
